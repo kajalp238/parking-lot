@@ -1,10 +1,12 @@
-package models
+package models.parkinglot
 
+import models.parkingspot.ParkingSpot
+import models.VehicleType
 import models.VehicleType.*
 import java.time.Duration
 import java.time.LocalDateTime
 
-class AirportParkingLot(private var vehicleParkingSpots: MutableMap<VehicleType, ParkingSpot>): ParkingLot(vehicleParkingSpots) {
+class AirportParkingLot(vehicleParkingSpots: MutableMap<VehicleType, ParkingSpot>): ParkingLot(vehicleParkingSpots) {
     override fun calculateFee(entryTime: LocalDateTime, exitTime: LocalDateTime, vehicleType: VehicleType): Long {
         val duration = Duration.between(entryTime, exitTime).toHours()
         val days = Duration.between(entryTime, exitTime).toDays()

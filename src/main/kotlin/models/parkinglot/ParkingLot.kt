@@ -1,5 +1,9 @@
-package models
+package models.parkinglot
 
+import models.Receipt
+import models.Ticket
+import models.VehicleType
+import models.parkingspot.ParkingSpot
 import java.time.LocalDateTime
 
 abstract class ParkingLot(private var vehicleParkingSpots: MutableMap<VehicleType, ParkingSpot>) {

@@ -1,6 +1,8 @@
 package models
 
 import models.VehicleType.*
+import models.parkinglot.StadiumParkingLot
+import models.parkingspot.ParkingSpot
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
@@ -10,7 +12,7 @@ class StadiumParkingLotTest {
     @Test
     fun `it should park the vehicle in stadium parking lot`() {
         //Arrange
-        val parkingSpots = mutableMapOf<VehicleType,ParkingSpot>()
+        val parkingSpots = mutableMapOf<VehicleType, ParkingSpot>()
         parkingSpots[CAR] = ParkingSpot(10)
         val parkingLot = StadiumParkingLot(parkingSpots)
 
@@ -25,7 +27,7 @@ class StadiumParkingLotTest {
     @Test
     fun `it should not park the second vehicle`() {
         //Arrange
-        val parkingSpots = mutableMapOf<VehicleType,ParkingSpot>()
+        val parkingSpots = mutableMapOf<VehicleType, ParkingSpot>()
         parkingSpots[CAR] = ParkingSpot(1)
         val parkingLot = StadiumParkingLot(parkingSpots)
         parkingLot.parkVehicle(CAR)

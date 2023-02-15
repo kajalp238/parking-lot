@@ -1,4 +1,6 @@
-package models
+package models.parkingspot
+
+import models.Ticket
 
 class ParkingSpot(private val totalSpots: Int) {
 

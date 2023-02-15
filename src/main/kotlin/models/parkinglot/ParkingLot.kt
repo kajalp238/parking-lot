@@ -13,7 +13,7 @@ abstract class ParkingLot(private var vehicleParkingSpots: MutableMap<VehicleTyp
     fun parkVehicle(vehicleType: VehicleType): Ticket {
         val vehicleParkingSpots = vehicleParkingSpots[vehicleType]!!
 
-        val spotId = vehicleParkingSpots.parkVehicle()
+        val spotId = vehicleParkingSpots.assignSpot()
         if (spotId == -1)
             throw Exception("Parking Lot is full")
 
@@ -30,7 +30,7 @@ abstract class ParkingLot(private var vehicleParkingSpots: MutableMap<VehicleTyp
         val vehicleParkingSpots = vehicleParkingSpots[vehicleType]!!
         val exitTime = LocalDateTime.now()
 
-        vehicleParkingSpots.unParkVehicle(ticket)
+        vehicleParkingSpots.releaseSpot(ticket)
 
         allValidTickets.remove(ticket.getTicketNumber())
 

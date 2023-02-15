@@ -7,7 +7,7 @@ class ParkingSpot(private val totalSpots: Int) {
     private var spots: MutableList<Boolean> = MutableList(totalSpots+1){false}
     private var availableSpots: Int = totalSpots
 
-    fun parkVehicle(): Int {
+    fun assignSpot(): Int {
         if (isSlotAvailable()) {
             for (i in 1..totalSpots) {
                 if (!spots[i]) {
@@ -20,8 +20,8 @@ class ParkingSpot(private val totalSpots: Int) {
         return -1
     }
 
-    fun unParkVehicle(ticket: Ticket) {
-        freeSlot(ticket.getParkingSpotId())
+    fun releaseSpot(ticket: Ticket) {
+        spots[ticket.getParkingSpotId()] = false
         availableSpots++
     }
 
@@ -31,10 +31,6 @@ class ParkingSpot(private val totalSpots: Int) {
 
     private fun reserveSlot(slotId: Int){
         spots[slotId] = true
-    }
-
-    private fun freeSlot(slotId: Int){
-        spots[slotId] = false
     }
 
 }

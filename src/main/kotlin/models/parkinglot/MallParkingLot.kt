@@ -1,18 +1,14 @@
 package models.parkinglot
 
+import constants.FeeConstants
 import models.parkingspot.ParkingSpot
 import models.VehicleType
-import models.VehicleType.*
 import java.time.Duration
 import java.time.LocalDateTime
 
 class MallParkingLot(vehicleParkingSpots: MutableMap<VehicleType, ParkingSpot>): ParkingLot(vehicleParkingSpots) {
     override fun calculateFee(entryTime: LocalDateTime, exitTime: LocalDateTime, vehicleType: VehicleType): Long {
         val duration = Duration.between(entryTime, exitTime).toHours()
-        return when(vehicleType){
-            MOTORCYCLE -> duration * 10
-            CAR, SUV -> duration * 20
-            BUS, TRUCK -> duration * 50
-        }
+        return duration * FeeConstants.mallFeeModel[vehicleType]!!
     }
 }
